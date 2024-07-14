@@ -1,7 +1,7 @@
 name: audio_analyzer
 description: "Analyze audio files"
 version: 0.0.1
-homepage:
+homepage: https://github.com/YofarDev/audio_analyzer
 
 environment:
   sdk: ">=3.4.3 <4.0.0"
