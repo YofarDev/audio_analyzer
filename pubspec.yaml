@@ -1,6 +1,6 @@
 name: audio_analyzer
 description: "Analyze audio files"
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/YofarDev/audio_analyzer
 
 environment:
@@ -22,4 +22,6 @@ flutter:
     platforms:
       android:
         package: fr.yofardev.audio_analyzer
+        pluginClass: AudioAnalyzerPlugin
+      ios:
         pluginClass: AudioAnalyzerPlugin

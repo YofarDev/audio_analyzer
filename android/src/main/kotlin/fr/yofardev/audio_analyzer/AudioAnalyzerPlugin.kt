@@ -25,8 +25,9 @@ class AudioAnalyzerPlugin: FlutterPlugin, MethodCallHandler {
         when (call.method) {
             "getAmplitudes" -> {
                 val filePath = call.argument<String>("filePath")
+                val samplesPerSecond = call.argument<Int>("samplesPerSecond") ?: 40
                 if (filePath != null) {
-                    getAmplitudes(filePath, result)
+                    getAmplitudes(filePath, samplesPerSecond, result)
                 } else {
                     result.error("INVALID_ARGUMENT", "File path is required", null)
                 }
@@ -42,7 +43,7 @@ class AudioAnalyzerPlugin: FlutterPlugin, MethodCallHandler {
         }
     
 
-private fun getAmplitudes(filePath: String, result: Result) {
+private fun getAmplitudes(filePath: String, samplesPerSecond: Int, result: Result) {
     try {
         val processingOutput = amplituda.processAudio(filePath, Cache.withParams(Cache.REUSE))
         val amplitudaResult = processingOutput.get()
