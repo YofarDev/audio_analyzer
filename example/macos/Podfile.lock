@@ -1,0 +1,22 @@
+PODS:
+  - audio_analyzer (0.0.1):
+    - FlutterMacOS
+  - FlutterMacOS (1.0.0)
+
+DEPENDENCIES:
+  - audio_analyzer (from `Flutter/ephemeral/.symlinks/plugins/audio_analyzer/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+
+EXTERNAL SOURCES:
+  audio_analyzer:
+    :path: Flutter/ephemeral/.symlinks/plugins/audio_analyzer/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+
+SPEC CHECKSUMS:
+  audio_analyzer: 697088dd01ac29ee92b7c54b54797ed40fd92f74
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+
+PODFILE CHECKSUM: 9ebaf0ce3d369aaa26a9ea0e159195ed94724cf3
+
+COCOAPODS: 1.15.2

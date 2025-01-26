@@ -10,8 +10,11 @@ class MethodChannelAudioAnalyzer extends AudioAnalyzerPlatform {
   final methodChannel = const MethodChannel('audio_analyzer');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<List<int>?> getAmplitudes(String audioPath, int sampleRate) async {
+    final List<int>? amplitudes = await methodChannel.invokeMethod<List<int>>('getAmplitudes', {
+      'audioPath': audioPath,
+      'sampleRate': sampleRate,
+    });
+    return amplitudes;
   }
 }

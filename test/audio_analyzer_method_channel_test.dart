@@ -22,6 +22,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+    expect(await platform.getAmplitudes('/Users/yofardev/Downloads/a.mp3', 10), <int>[]);
   });
 }

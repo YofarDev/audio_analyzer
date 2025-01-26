@@ -23,7 +23,5 @@ abstract class AudioAnalyzerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
+  Future<List<int>?> getAmplitudes(String audioPath, int sampleRate);
 }

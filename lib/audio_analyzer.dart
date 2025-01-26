@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class AudioAnalyzer {
@@ -12,7 +14,10 @@ class AudioAnalyzer {
       'filePath': filePath,
       'samplesPerSecond': samplesPerSecond, // doesnt work for android
     });
-    if (Platform.isIOS) {
+    if (kIsWeb) {
+      return amplitudes.cast<int>();
+    }
+    if (Platform.isIOS || Platform.isMacOS) {
       return amplitudes
           .cast<double>()
           .map((amp) => (amp * 100).toInt())

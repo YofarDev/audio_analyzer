@@ -24,6 +24,7 @@ allprojects {
     }
 }
 ```
+
 On iOS it should just work.
 
 ## Usage
@@ -46,7 +47,6 @@ try {
   print('Error: $e');
 }
 ```
-
 
 ## Example
 
@@ -90,22 +90,28 @@ class MyApp extends StatelessWidget {
 
 ## Limitations
 
-Results from iOS and Android are slightly different. For the same file of 2 seconds :
+Results from iOS and Android are slightly different.
+Example with an audio file of 2 seconds (same file for both platforms) :
+
 - Android output :
+
 ```
 amplitudes = [0, 0, 0, 0, 0, 3, 7, 10, 11, 8, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 10, 13, 14, 11, 5, 1, 1, 0, 0, 0, 2, 11, 11, 11, 12, 12, 12, 10, 12, 10, 6, 1, 0, 1, 9, 9, 4, 0, 1, 2, 5, 11, 11, 9, 7, 2, 0, 0, 1, 0, 5, 10, 9, 2, 0, 0, 1, 9, 12, 8, 2, 1, 2, 1, 0, 0, 7, 17, 14, 12, 11, 10, 8, 7, 5, 3, 2, 1, 1, 0, 0, 0]
 ```
+
 ```
 amplitudes.length = 92
 ```
 
 - iOS output :
+
 ```
 amplitudes = [0, 0, 0, 0, 0, 3, 8, 10, 10, 6, 0, 0, 0, 1, 1, 0, 0, 1, 1, 8, 13, 14, 11, 6, 1, 1, 0, 0, 0, 4, 11, 11, 11, 12, 13, 11, 12, 12, 8, 3, 0, 1, 7, 10, 5, 0, 1, 2, 4, 11, 11, 9, 7, 2, 0, 1, 1, 1, 7, 10, 7, 1, 0, 0, 6, 12, 10, 3, 1, 2, 1, 0, 0, 7, 16, 14, 12, 11, 10, 8, 7, 5, 3, 2, 1, 1, 0, 0, 0, 0, 0]
 ```
+
 ```
 amplitudes.length = 91
-``` 
+```
 
 ## Contributing
 
