@@ -1,3 +1,8 @@
+## 0.1.2
+
+- Implemented real Web audio analysis using browser `fetch` + Web Audio decoding.
+- Removed placeholder zero-filled amplitude output on Web.
+
 ## 0.1.1
 
 - Republish release to unblock pub.dev upload after `0.1.0` was already taken.

@@ -8,7 +8,7 @@ A Flutter plugin that extracts waveform amplitudes from an audio file.
 - iOS
 - macOS
 - Linux
-- Web (placeholder implementation)
+- Web
 
 ## Installation
 
@@ -16,7 +16,7 @@ Add the dependency:
 
 ```yaml
 dependencies:
-  audio_analyzer: ^0.1.1
+  audio_analyzer: ^0.1.2
 ```
 
 For Android, add JitPack to your top-level `build.gradle` repositories:

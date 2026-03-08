@@ -1,6 +1,6 @@
 name: audio_analyzer
 description: "Analyze audio files"
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/YofarDev/audio_analyzer
 
 environment:
