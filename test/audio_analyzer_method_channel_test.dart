@@ -7,21 +7,40 @@ void main() {
 
   MethodChannelAudioAnalyzer platform = MethodChannelAudioAnalyzer();
   const MethodChannel channel = MethodChannel('audio_analyzer');
+  MethodCall? lastMethodCall;
 
   setUp(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
       channel,
       (MethodCall methodCall) async {
-        return '42';
+        lastMethodCall = methodCall;
+        if (methodCall.method == 'getAmplitudes') {
+          return <double>[0.1, 0.25, 0.89];
+        }
+        return null;
       },
     );
   });
 
   tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await platform.getAmplitudes('/Users/yofardev/Downloads/a.mp3', 10), <int>[]);
+  test('getAmplitudes maps payload and normalizes doubles', () async {
+    expect(
+      await platform.getAmplitudes('/tmp/a.mp3', 10),
+      <int>[10, 25, 89],
+    );
+    expect(lastMethodCall?.arguments, <String, dynamic>{
+      'filePath': '/tmp/a.mp3',
+      'samplesPerSecond': 10,
+    });
+  });
+
+  test('clearCache invokes method channel', () async {
+    await platform.clearCache();
+    expect(lastMethodCall?.method, 'clearCache');
   });
 }

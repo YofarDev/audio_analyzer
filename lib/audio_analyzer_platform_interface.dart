@@ -23,5 +23,7 @@ abstract class AudioAnalyzerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<List<int>?> getAmplitudes(String audioPath, int sampleRate);
+  Future<List<int>> getAmplitudes(String filePath, int samplesPerSecond);
+
+  Future<void> clearCache();
 }

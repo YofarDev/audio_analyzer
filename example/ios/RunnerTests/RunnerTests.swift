@@ -10,14 +10,14 @@ import XCTest
 
 class RunnerTests: XCTestCase {
 
-  func testGetPlatformVersion() {
+  func testClearCacheReturnsNil() {
     let plugin = AudioAnalyzerPlugin()
 
-    let call = FlutterMethodCall(methodName: "getPlatformVersion", arguments: [])
+    let call = FlutterMethodCall(methodName: "clearCache", arguments: [])
 
     let resultExpectation = expectation(description: "result block must be called.")
     plugin.handle(call) { result in
-      XCTAssertEqual(result as! String, "iOS " + UIDevice.current.systemVersion)
+      XCTAssertNil(result)
       resultExpectation.fulfill()
     }
     waitForExpectations(timeout: 1)

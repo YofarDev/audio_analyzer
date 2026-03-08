@@ -10,11 +10,34 @@ class MethodChannelAudioAnalyzer extends AudioAnalyzerPlatform {
   final methodChannel = const MethodChannel('audio_analyzer');
 
   @override
-  Future<List<int>?> getAmplitudes(String audioPath, int sampleRate) async {
-    final List<int>? amplitudes = await methodChannel.invokeMethod<List<int>>('getAmplitudes', {
-      'audioPath': audioPath,
-      'sampleRate': sampleRate,
-    });
-    return amplitudes;
+  Future<List<int>> getAmplitudes(String filePath, int samplesPerSecond) async {
+    final List<dynamic>? amplitudes =
+        await methodChannel.invokeMethod<List<dynamic>>(
+      'getAmplitudes',
+      {
+        'filePath': filePath,
+        'samplesPerSecond': samplesPerSecond,
+      },
+    );
+    if (amplitudes == null) {
+      return <int>[];
+    }
+    return amplitudes.map<int>((dynamic amp) {
+      if (amp is int) {
+        return amp;
+      }
+      if (amp is double) {
+        return (amp * 100).round().clamp(0, 100);
+      }
+      throw PlatformException(
+        code: 'INVALID_RESULT',
+        message: 'Unexpected amplitude value type: ${amp.runtimeType}',
+      );
+    }).toList();
+  }
+
+  @override
+  Future<void> clearCache() async {
+    await methodChannel.invokeMethod<void>('clearCache');
   }
 }

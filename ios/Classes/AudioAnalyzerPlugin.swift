@@ -18,6 +18,8 @@ public class AudioAnalyzerPlugin: NSObject, FlutterPlugin {
           } else {
               result(FlutterError(code: "INVALID_ARGUMENT", message: "File path and samplesPerSecond are required", details: nil))
           }
+        case "clearCache":
+            result(nil)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -43,7 +45,8 @@ private func getAmplitudes(filePath: String, samplesPerSecond: Int, result: @esc
         
         let channelData = floatChannelData[0]
         let sampleRate = format.sampleRate
-        let windowSize = Int(sampleRate / Double(samplesPerSecond))
+        let safeSamplesPerSecond = max(samplesPerSecond, 1)
+        let windowSize = max(Int(sampleRate / Double(safeSamplesPerSecond)), 1)
         var amplitudes: [Float] = []
         let frameLength = Int(buffer.frameLength)
         

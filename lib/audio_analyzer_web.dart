@@ -21,9 +21,8 @@ class AudioAnalyzerWeb extends AudioAnalyzerPlatform {
     AudioAnalyzerPlatform.instance = AudioAnalyzerWeb();
   }
 
-
   @override
-  Future<List<int>> getAmplitudes(String audioPath, int sampleRate) async {
+  Future<List<int>> getAmplitudes(String filePath, int samplesPerSecond) async {
     // try {
     //   final result = await jsu.promiseToFuture(_getAmplitudes(filePath, samplesPerSecond));
     //   return List<int>.from(result);
@@ -33,4 +32,6 @@ class AudioAnalyzerWeb extends AudioAnalyzerPlatform {
     return List<int>.filled(100, 0);
   }
 
+  @override
+  Future<void> clearCache() async {}
 }
