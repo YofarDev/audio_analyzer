@@ -1,3 +1,7 @@
+## 0.1.1
+
+- Republish release to unblock pub.dev upload after `0.1.0` was already taken.
+
 ## 0.1.0
 
 - Added Linux support with native WAV amplitude extraction.
